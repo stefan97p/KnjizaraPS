@@ -32,6 +32,14 @@ public class ModelTabeleKnjige extends AbstractTableModel {
         return kolone.length;
     }
 
+    public List<Knjiga> getListaKnjiga() {
+        return listaKnjiga;
+    }
+
+    public void setListaKnjiga(List<Knjiga> listaKnjiga) {
+        this.listaKnjiga = listaKnjiga;
+    }
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Knjiga knjiga = listaKnjiga.get(rowIndex);
