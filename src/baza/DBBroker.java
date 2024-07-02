@@ -131,6 +131,26 @@ public class DBBroker {
             Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+
+    public boolean login(String username, String password) {
+        String upit = "SELECT * FROM USER WHERE username=? AND password =?";
+        try {
+            PreparedStatement ps = Konekcija.getInstance().getConnection().prepareStatement(upit);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs =ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
     
     
     
